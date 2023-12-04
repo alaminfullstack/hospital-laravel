@@ -25,6 +25,7 @@ class CreateDoctorsTable extends Migration
             $table->string('blood_group')->nullable();
             $table->string('address')->nullable();
             $table->string('image')->nullable();
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
