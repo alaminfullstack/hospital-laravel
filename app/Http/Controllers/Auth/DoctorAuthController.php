@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use App\Models\Doctor;
+use App\Models\Designation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -80,5 +82,18 @@ class DoctorAuthController extends Controller
         }
         
         return redirect()->back()->with('error', 'something went to wrong!');
+    }
+
+    public function dashboard(){
+        $total_patient = User::count();
+        $total_doctor = Doctor::count();
+        $total_designation = Designation::count();
+        $today_appoitments  = [];
+        return view('doctor.dashboard', compact('total_patient', 'total_doctor', 'total_designation', 'today_appoitments'));
+    }
+
+    public function logout(){
+        Auth::guard('doctor')->logout();
+        return redirect()->route('doctor.login');
     }
 }
