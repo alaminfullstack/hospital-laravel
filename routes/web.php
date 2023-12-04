@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('patient')->as('patient.')->group(function () {
     Route::get('login', [PatientAuthController::class, 'login'])->name('login');
     Route::post('login', [PatientAuthController::class, 'save_login'])->name('save_login');
+    Route::get('register', [PatientAuthController::class, 'register'])->name('register');
+    Route::post('register', [PatientAuthController::class, 'save_register'])->name('save_register');
 
     Route::middleware('auth')->group(function () {
         Route::get('/', [PatientAuthController::class, 'dashboard'])->name('dashboard');
