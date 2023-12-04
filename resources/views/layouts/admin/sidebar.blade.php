@@ -1,6 +1,6 @@
 <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
     <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
-        aria-labelledby="sidebarMenuLabel">
+        aria-labelledby="sidebarMenuLabel" style="height: 100vh;">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="">
+                    <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.patients.index') }}">
                         <svg class="bi">
                             <use xlink:href="#cart" />
                         </svg>

@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\Designation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 
 class DoctorController extends Controller
@@ -55,6 +56,11 @@ class DoctorController extends Controller
         $doctor->blood_group = $request->blood_group;
         $doctor->address = $request->address;
         $doctor->designation_id = $request->designation_id;
+
+        
+        if($request->password != null){
+            $doctor->password = Hash::make($request->password);
+        }
 
         if ($request->has('image')) {
             $file = $request->file('image');

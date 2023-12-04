@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-   
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -10,7 +10,7 @@
     <meta name="generator" content="Hugo 0.118.2">
     <title>@yield('title') -- Medical Center</title>
 
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
     <link href="{{ asset('assets/css') }}/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +18,7 @@
     <!-- Favicons -->
 
     <meta name="theme-color" content="#712cf9">
-
+    <link href="{{ asset('assets/css') }}/dashboard.css" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -97,13 +97,18 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
             display: block !important;
         }
+
+        .card {
+            border: 0;
+            box-shadow: 0px 0px 2px #c3c3c3;
+        }
     </style>
 
 
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="{{ asset('assets/css') }}/dashboard.css" rel="stylesheet">
+    
 </head>
 
 <body>
