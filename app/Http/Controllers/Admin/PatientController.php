@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repository\PatientRepository;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 
@@ -39,45 +40,10 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'name' => 'required'
-        ]);
 
-
-        $patient = new User();
-        $patient->name = $request->name;
-
-        $patient->email = $request->email;
-        $patient->mobile = $request->mobile;
-        $patient->gender = $request->gender;
-        $patient->blood_group = $request->blood_group;
-        $patient->address = $request->address;
-
-        if($request->password != null){
-            $patient->password = Hash::make($request->password);
-        }
-
-        if ($request->has('image')) {
-            $file = $request->file('image');
-            $extenstion = $file->getClientOriginalExtension();
-            $file_name = time() . '.' . $extenstion;
-
-            $path = public_path('uploads/' . $file_name);
-
-            // Resize and save the image using Intervention Image
-            Image::make($file->getRealPath())->resize(600, 600, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($path);
-
-            $patient->image = 'uploads/' . $file_name;
-        }
-
-
-        if ($patient->save()) {
+        if (PatientRepository::create($request)) {
             return redirect()->route('admin.patients.index')->with('success', 'Patient Uploaded Successfully');
         }
-
 
         return back()->with('error', 'Something went to wrong!');
     }
@@ -114,59 +80,9 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email'
-        ]);
 
-        $patient = User::findOrFail($id);
-
-
-
-        if ($request->has('image')) {
-            $image_path = public_path('uploads/' . $patient->image);
-
-            if ($patient->image != null) {
-                if (file_exists($image_path)) {
-                    unlink($image_path);
-                }
-            }
-
-            $file = $request->file('image');
-            $extenstion = $file->getClientOriginalExtension();
-            $file_name = time() . '.' . $extenstion;
-
-            $path = public_path('uploads/' . $file_name);
-
-            // Resize and save the image using Intervention Image
-            Image::make($file->getRealPath())->resize(600, 600, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($path);
-
-
-            $patient->name = $request->name;
-            $patient->image = 'uploads/' . $file_name;
-            $patient->email = $request->email;
-            $patient->mobile = $request->mobile;
-            $patient->gender = $request->gender;
-            $patient->blood_group = $request->blood_group;
-            $patient->address = $request->address;
-
-            if ($patient->update()) {
-                return redirect()->route('admin.patients.index')->with('success', 'Patient Uploaded Successfully');
-            }
-        } else {
-            $patient->name = $request->name;
-            $patient->email = $request->email;
-            $patient->mobile = $request->mobile;
-            $patient->gender = $request->gender;
-            $patient->blood_group = $request->blood_group;
-            $patient->address = $request->address;
-
-            if ($patient->update()) {
-                return redirect()->route('admin.patients.index')->with('success', 'Updated Successfully');
-            }
+        if (PatientRepository::update($request, $id)) {
+            return redirect()->route('admin.patients.index')->with('success', 'Patient Updated Successfully');
         }
 
         return back()->with('error', 'Something went to wrong!');
@@ -180,21 +96,12 @@ class PatientController extends Controller
      */
     public function destroy($id)
     {
-        //
 
-        $patient = User::findOrFail($id);
-
-        $image_path = public_path('uploads/' . $patient->image);
-        if ($patient->image != null) {
-            if (file_exists($image_path)) {
-                unlink($image_path);
-            }
+        if (PatientRepository::delete($id)) {
+            return redirect()->route('admin.patients.index')
+                ->with('success', 'Patient deleted successfully');
         }
 
-
-        $patient->delete();
-
-        return redirect()->route('admin.patients.index')
-            ->with('success', 'Patient deleted successfully');
+        return back()->with('error', 'Something went to wrong!');
     }
 }
