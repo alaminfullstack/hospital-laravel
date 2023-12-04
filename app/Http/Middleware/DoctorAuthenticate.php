@@ -20,4 +20,14 @@ class DoctorAuthenticate extends Middleware
             return route('doctor.login');
         }
     }
+
+    protected function authenticate($request, array $guards)
+    {
+       
+        if ($this->auth->guard('doctor')->check()) {
+            return $this->auth->shouldUse('doctor');
+        }
+        
+        $this->unauthenticated($request, ['doctor']);
+    }
 }

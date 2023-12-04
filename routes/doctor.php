@@ -9,7 +9,7 @@ Route::prefix('doctor')->as('doctor.')->group(function () {
     Route::get('register', [DoctorAuthController::class, 'register'])->name('register');
     Route::post('register', [DoctorAuthController::class, 'save_register'])->name('save_register');
 
-    Route::middleware('admin.auth')->group(function () {
+    Route::middleware('doctor.auth')->group(function () {
         Route::get('/', [DoctorAuthController::class, 'dashboard'])->name('dashboard');
         Route::get('logout', [DoctorAuthController::class, 'logout'])->name('logout');
     });

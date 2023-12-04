@@ -11,7 +11,7 @@
                 
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page"
-                        href="{{ route('doctor.dasboard') }}">
+                        href="{{ route('doctor.dashboard') }}">
                         <svg class="bi">
                             <use xlink:href="#house-fill" />
                         </svg>
