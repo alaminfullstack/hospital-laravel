@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\PatientAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::prefix('patient')->as('patient.')->group(function () {
+    Route::get('login', [PatientAuthController::class, 'login'])->name('login');
+    Route::post('login', [PatientAuthController::class, 'save_login'])->name('save_login');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/', [PatientAuthController::class, 'dashboard'])->name('dashboard');
+        Route::get('logout', [PatientAuthController::class, 'logout'])->name('logout');
+    });
+});
 
 Route::get('/', function () {
     return view('welcome');
