@@ -5,6 +5,9 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\DesignationController;
+use App\Http\Controllers\Admin\MedicineController;
+use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\ServiceController;
 
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::get('login', [AdminAuthController::class, 'login'])->name('login');
@@ -16,6 +19,12 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
         // designations
         Route::resource('designations', DesignationController::class)->names('designations');
+        // rooms
+        Route::resource('rooms', RoomController::class)->names('rooms');
+        // services
+        Route::resource('services', ServiceController::class)->names('services');
+        // medicines
+        Route::resource('medicines', MedicineController::class)->names('medicines');
 
         // doctors
         Route::resource('doctors', DoctorController::class)->names('doctors');
