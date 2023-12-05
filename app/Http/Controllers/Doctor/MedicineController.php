@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Doctor;
 
-use App\Http\Controllers\Controller;
 use App\Models\Medicine;
-use App\Repository\MedicineRepository;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Repository\MedicineRepository;
 
 class MedicineController extends Controller
 {
@@ -17,7 +17,7 @@ class MedicineController extends Controller
     public function index()
     {
         $medicines = Medicine::latest()->paginate();
-        return view('admin.medicines.index', compact('medicines'));
+        return view('doctor.medicines.index', compact('medicines'));
     }
 
     /**
@@ -27,7 +27,7 @@ class MedicineController extends Controller
      */
     public function create()
     {
-        return view('admin.medicines.create');
+        return view('doctor.medicines.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class MedicineController extends Controller
     {
         
         if (MedicineRepository::create($request)) {
-            return redirect()->route('admin.medicines.index')->with('success', 'Medicine Uploaded Successfully');
+            return redirect()->route('doctor.medicines.index')->with('success', 'Medicine Uploaded Successfully');
         }
 
         return back()->with('error', 'Something went to wrong!');
@@ -66,7 +66,7 @@ class MedicineController extends Controller
     public function edit($id)
     {
         $medicine = Medicine::findOrFail($id);
-        return view('admin.medicines.edit', compact('medicine'));
+        return view('doctor.medicines.edit', compact('medicine'));
     }
 
     /**
@@ -80,7 +80,7 @@ class MedicineController extends Controller
     {
     
         if (MedicineRepository::update($request, $id)) {
-            return redirect()->route('admin.medicines.index')->with('success', 'Updated Successfully');
+            return redirect()->route('doctor.medicines.index')->with('success', 'Updated Successfully');
         }
 
         return back()->with('error', 'Something went to wrong!');
@@ -95,7 +95,7 @@ class MedicineController extends Controller
     public function destroy($id)
     {
         if (MedicineRepository::delete($id)) {
-            return redirect()->route('admin.medicines.index')->with('success', 'Medicine Deleted Successfully');
+            return redirect()->route('doctor.medicines.index')->with('success', 'Medicine Deleted Successfully');
         }
 
         return back()->with('error', 'Something went to wrong!');

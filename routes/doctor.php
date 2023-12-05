@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Doctor\PatientController;
 use App\Http\Controllers\Auth\DoctorAuthController;
+use App\Http\Controllers\Doctor\MedicineController;
 
 Route::prefix('doctor')->as('doctor.')->group(function () {
     Route::get('login', [DoctorAuthController::class, 'login'])->name('login');
@@ -14,6 +15,8 @@ Route::prefix('doctor')->as('doctor.')->group(function () {
         Route::get('/', [DoctorAuthController::class, 'dashboard'])->name('dashboard');
         Route::get('logout', [DoctorAuthController::class, 'logout'])->name('logout');
 
+         // medicines
+         Route::resource('medicines', MedicineController::class)->names('medicines');
          // patients
          Route::resource('patients', PatientController::class)->names('patients');
     });
