@@ -54,7 +54,7 @@ class PatientRepository
     }
 
 
-    private function dataSave($request, $id = null)
+    private static function dataSave($request, $id = null)
     {
 
         $patient = new User();

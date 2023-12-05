@@ -36,7 +36,7 @@
                 <div class="h-100 p-5 text-bg-light rounded-3">
                     <h2>Doctor</h2>
                     <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look.
-                        Then, mix and match with additional component themes and more. Are you new here ? <a href="{{ route('patient.register') }}">Register</a></p>
+                        Then, mix and match with additional component themes and more. Are you new here ? <a href="{{ route('doctor.register') }}">Register</a></p>
                     <a class="btn btn-outline-secondary" href="{{ route('doctor.login') }}">Login as a doctor</a>
                 </div>
             </div>

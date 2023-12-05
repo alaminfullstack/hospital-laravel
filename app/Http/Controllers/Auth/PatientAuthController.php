@@ -48,7 +48,7 @@ class PatientAuthController extends Controller
      * show login function
      *
      **/
-    public function show_register(Request $request)
+    public function register()
     {
         return view('patient.register');
     }
@@ -62,7 +62,7 @@ class PatientAuthController extends Controller
      * @param Request $request
      * @return Auth
      **/
-    public function register(Request $request)
+    public function save_register(Request $request)
     {
 
         $request->validate([

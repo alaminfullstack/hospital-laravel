@@ -47,7 +47,7 @@ class DoctorAuthController extends Controller
      * show login function
      *
      **/
-    public function show_register(Request $request)
+    public function register()
     {
         return view('doctor.register');
     }
@@ -61,7 +61,7 @@ class DoctorAuthController extends Controller
      * @param Request $request
      * @return Auth
      **/
-    public function register(Request $request)
+    public function save_register(Request $request)
     {
 
         $request->validate([
