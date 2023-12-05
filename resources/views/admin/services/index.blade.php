@@ -48,7 +48,7 @@
                                     @forelse ($services as $room)
                                         <tr>
                                             <td>
-                                                {{ $loop->iteration }}
+                                                {{ $services->firstItem() + $loop->index }}
                                             </td>
 
                                             <td>

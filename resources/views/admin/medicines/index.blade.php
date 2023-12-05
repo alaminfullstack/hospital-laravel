@@ -48,7 +48,7 @@
                                     @forelse ($medicines as $room)
                                         <tr>
                                             <td>
-                                                {{ $loop->iteration }}
+                                                {{ $medicines->firstItem() + $loop->index }}
                                             </td>
 
                                             <td>

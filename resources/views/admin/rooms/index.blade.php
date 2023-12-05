@@ -49,7 +49,7 @@
                                     @forelse ($rooms as $room)
                                         <tr>
                                             <td>
-                                                {{ $loop->iteration }}
+                                                {{ $rooms->firstItem() + $loop->index }}
                                             </td>
 
                                             <td>

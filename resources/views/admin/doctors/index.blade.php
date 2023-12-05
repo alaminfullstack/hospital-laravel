@@ -55,7 +55,7 @@
                                                 {{-- <div class="card-img-top">
                                                     <img src="{{ asset($doctor->image) }}" class="rounded-0 shadow-sm card-img" style="width: 60px; height: 60px;"/>
                                                 </div> --}}
-                                                {{ $loop->iteration }}
+                                                {{ $doctors->firstItem() + $loop->index }}
                                             </td>
 
                                             <td>

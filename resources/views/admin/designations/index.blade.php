@@ -49,7 +49,7 @@
                                     @forelse ($designations as $designation)
                                         <tr>
                                             <td>
-                                                {{ $loop->iteration }}
+                                                {{ $designations->firstItem() + $loop->index }}
                                             </td>
 
                                             <td>
