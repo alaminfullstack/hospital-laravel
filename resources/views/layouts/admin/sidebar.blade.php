@@ -63,7 +63,7 @@
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.rooms.index') }}">
                         <svg class="bi">
-                            <use xlink:href="#puzzle" />
+                            <use xlink:href="#app" />
                         </svg>
                         Rooms
                     </a>
@@ -71,7 +71,7 @@
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.services.index') }}">
                         <svg class="bi">
-                            <use xlink:href="#puzzle" />
+                            <use xlink:href="#database" />
                         </svg>
                         Service
                     </a>
@@ -79,7 +79,7 @@
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.medicines.index') }}">
                         <svg class="bi">
-                            <use xlink:href="#puzzle" />
+                            <use xlink:href="#capsule" />
                         </svg>
                         Medicine
                     </a>
