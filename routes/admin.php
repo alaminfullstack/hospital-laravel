@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BedController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
@@ -21,6 +22,9 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::resource('designations', DesignationController::class)->names('designations');
         // rooms
         Route::resource('rooms', RoomController::class)->names('rooms');
+        // beds
+        Route::resource('beds', BedController::class)->names('beds');
+
         // services
         Route::resource('services', ServiceController::class)->names('services');
         // medicines

@@ -69,6 +69,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.beds.index') }}">
+                        <svg class="bi">
+                            <use xlink:href="#segmented-nav" />
+                        </svg>
+                        Beds
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.services.index') }}">
                         <svg class="bi">
                             <use xlink:href="#database" />
