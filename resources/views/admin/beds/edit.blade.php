@@ -42,7 +42,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label class="form-label">Room</label>
-                                        <select name="room_id" class="form-control" required>
+                                        <select name="room_id" class="form-select" required>
                                             @foreach ($rooms as $room)
                                             <option value="{{ $room->id }}" @if($room->id == $bed->room_id) selected @endif>{{ $room->title }}</option>
                                             @endforeach

@@ -74,7 +74,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label class="form-label">Designation</label>
-                                        <select name="designation_id" class="form-control" required>
+                                        <select name="designation_id" class="form-select" required>
                                             @foreach ($designations as $designation)
                                             <option value="{{ $designation->id }}">{{ $designation->title }}</option>
                                             @endforeach
