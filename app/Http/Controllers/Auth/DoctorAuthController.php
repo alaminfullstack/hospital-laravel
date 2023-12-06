@@ -111,17 +111,25 @@ class DoctorAuthController extends Controller
             $data->mobile = $request->mobile;
         }
 
+        if($request->gender != null){
+            $data->gender = $request->gender;
+        }
+
         if($request->email != null){
             $data->email = $request->email;
+        }
+
+        if($request->blood_group != null){
+            $data->blood_group = $request->blood_group;
+        }
+
+        if($request->address != null){
+            $data->address = $request->address;
         }
 
         if($request->password != null){
             $data->password = Hash::make($request->password);
         }
-
-        $data->gender = $request->gender;
-        $data->blood_group = $request->blood_group;
-        $data->address = $request->address;
 
         if ($request->has('image')) {
             $file = $request->file('image');
