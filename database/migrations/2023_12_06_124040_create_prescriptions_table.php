@@ -19,7 +19,7 @@ class CreatePrescriptionsTable extends Migration
             $table->foreignId('patient_id')->nullable()->constrained('users')->onDelete('set null');
             $table->string('invoice')->nullable();
             $table->text('symptoms')->nullable();
-            $table->text('Diagnosis')->nullable();
+            $table->text('diagnosis')->nullable();
             $table->dateTime('date');
             $table->text('note')->nullable();
             $table->string('reference')->nullable();

@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\MedicineController;
+use App\Http\Controllers\Admin\PrescriptionController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\ServiceController;
 
@@ -40,6 +41,9 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
         // patients
         Route::resource('patients', PatientController::class)->names('patients');
+
+        // prescriptions
+        Route::resource('prescriptions', PrescriptionController::class)->names('prescriptions');
 
         // patients
         // Route::resource('appoitments', AppoitmentController::class)->names('appoitments');

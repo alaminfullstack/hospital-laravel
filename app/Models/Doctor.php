@@ -48,4 +48,9 @@ class Doctor extends Authenticatable
     {
         return $this->belongsTo(Designation::class, 'designation_id', 'id');
     }
+
+
+    public function scopeActive($query){
+        return $query->where('status', 1);
+    }
 }

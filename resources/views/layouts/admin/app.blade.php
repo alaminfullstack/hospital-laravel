@@ -182,6 +182,8 @@
             theme: 'bootstrap-5'
         });
     </script>
+
+    @stack('script')
 </body>
 
 </html>

@@ -45,7 +45,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 " href="#">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'admin.patients.index') active @endif" href="{{ route('admin.prescriptions.index') }}">
                         <svg class="bi">
                             <use xlink:href="#graph-up" />
                         </svg>
