@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
     <link href="{{ asset('assets/css') }}/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/css') }}/select2.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/css') }}/select2-bootstrap-5-theme.min.css" rel="stylesheet">
 
     <!-- Favicons -->
 
@@ -161,8 +163,17 @@
         </div>
     </div>
 
+    <script src="{{ asset('assets/js') }}/jquery.min.js"></script>
     <script src="{{ asset('assets/js') }}/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js') }}/color-modes.js"></script>
+    <script src="{{ asset('assets/js') }}/select2.full.min.js"></script>
+    <script>
+        $('.form-select').select2({
+            theme: 'bootstrap-5'
+        });
+    </script>
+
+    @stack('script')
 </body>
 
 </html>
