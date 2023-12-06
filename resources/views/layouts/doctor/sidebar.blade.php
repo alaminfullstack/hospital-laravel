@@ -88,11 +88,11 @@
 
             <ul class="nav flex-column mb-auto">
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'doctor.profile') active @endif" href="{{ route('doctor.profile') }}">
                         <svg class="bi">
-                            <use xlink:href="#gear-wide-connected" />
+                            <use xlink:href="#person" />
                         </svg>
-                        Settings
+                        Profile
                     </a>
                 </li>
                 <li class="nav-item">

@@ -117,11 +117,11 @@
 
         <ul class="navbar-nav flex-row">
             <li class="nav-item text-nowrap d-none d-md-block">
-                <a class="nav-link px-3 text-white" href="{{ route('doctor.logout') }}">
+                <a class="nav-link px-3 text-white @if(Route::currentRouteName() == 'doctor.profile') active @endif" href="{{ route('doctor.profile') }}">
                     <svg class="bi">
-                        <use xlink:href="#gear-wide-connected" />
+                        <use xlink:href="#person" />
                     </svg>
-                    Settings
+                    Profile
                 </a>
             </li>
 

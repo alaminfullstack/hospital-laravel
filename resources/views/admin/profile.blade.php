@@ -26,7 +26,7 @@
         </div>
 
         <div class="col-md-6">
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div class="h5 mb-0">
                         {{ __('Profile Update') }}
@@ -73,7 +73,7 @@
         </div>
 
         <div class="col-md-6">
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div class="h5 mb-0">
                         {{ __('Password Update') }}
@@ -85,14 +85,14 @@
                     <form action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group mb-3">
                                     <label class="form-label">New Password *</label>
                                     <input type="password" name="password" class="form-control" required />
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group mb-3">
                                     <label class="form-label">Confirm Password</label>
                                     <input type="password" name="password_confirmation" class="form-control" required />

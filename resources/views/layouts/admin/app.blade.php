@@ -120,6 +120,14 @@
 
         <ul class="navbar-nav flex-row">
             <li class="nav-item text-nowrap d-none d-md-block">
+                <a class="nav-link px-3 text-white" href="{{ route('admin.profile') }}">
+                    <svg class="bi">
+                        <use xlink:href="#person" />
+                    </svg>
+                    Profile
+                </a>
+            </li>
+            <li class="nav-item text-nowrap d-none d-md-block">
                 <a class="nav-link px-3 text-white" href="{{ route('admin.logout') }}">
                     <svg class="bi">
                         <use xlink:href="#gear-wide-connected" />
