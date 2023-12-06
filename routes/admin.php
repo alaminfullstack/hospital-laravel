@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\DesignationController;
+use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\MedicineController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -29,6 +30,8 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
         // services
         Route::resource('services', ServiceController::class)->names('services');
+        // materials
+        Route::resource('materials', MaterialController::class)->names('materials');
         // medicines
         Route::resource('medicines', MedicineController::class)->names('medicines');
 

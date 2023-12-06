@@ -9,8 +9,8 @@
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'admin.dashboard') active @endif" aria-current="page"
-                        href="{{ route('admin.dashboard') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'admin.dashboard') active @endif"
+                        aria-current="page" href="{{ route('admin.dashboard') }}">
                         <svg class="bi">
                             <use xlink:href="#house-fill" />
                         </svg>
@@ -18,7 +18,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'admin.doctors.index') active @endif" href="{{ route('admin.doctors.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'admin.doctors.index') active @endif"
+                        href="{{ route('admin.doctors.index') }}">
                         <svg class="bi">
                             <use xlink:href="#file-earmark" />
                         </svg>
@@ -26,7 +27,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'admin.patients.index') active @endif" href="{{ route('admin.patients.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'admin.patients.index') active @endif"
+                        href="{{ route('admin.patients.index') }}">
                         <svg class="bi">
                             <use xlink:href="#cart" />
                         </svg>
@@ -50,10 +52,22 @@
                         Prescriptions
                     </a>
                 </li>
-    
+            </ul>
 
+            <h6
+                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+                <span>Basic</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                    <svg class="bi">
+                        <use xlink:href="#arrow-90deg-left" />
+                    </svg>
+                </a>
+            </h6>
+
+            <ul class="nav flex-column mb-auto">
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'admin.designations.index') active @endif" href="{{ route('admin.designations.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'admin.designations.index') active @endif"
+                        href="{{ route('admin.designations.index') }}">
                         <svg class="bi">
                             <use xlink:href="#puzzle" />
                         </svg>
@@ -61,7 +75,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'admin.rooms.index') active @endif" href="{{ route('admin.rooms.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'admin.rooms.index') active @endif"
+                        href="{{ route('admin.rooms.index') }}">
                         <svg class="bi">
                             <use xlink:href="#app" />
                         </svg>
@@ -69,7 +84,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'admin.beds.index') active @endif" href="{{ route('admin.beds.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'admin.beds.index') active @endif"
+                        href="{{ route('admin.beds.index') }}">
                         <svg class="bi">
                             <use xlink:href="#segmented-nav" />
                         </svg>
@@ -77,7 +93,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'admin.services.index') active @endif" href="{{ route('admin.services.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'admin.services.index') active @endif"
+                        href="{{ route('admin.services.index') }}">
                         <svg class="bi">
                             <use xlink:href="#database" />
                         </svg>
@@ -85,11 +102,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'admin.medicines.index') active @endif" href="{{ route('admin.medicines.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'admin.medicines.index') active @endif"
+                        href="{{ route('admin.medicines.index') }}">
                         <svg class="bi">
                             <use xlink:href="#capsule" />
                         </svg>
                         Medicine
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'admin.materials.index') active @endif"
+                        href="{{ route('admin.materials.index') }}">
+                        <svg class="bi">
+                            <use xlink:href="#sliders2" />
+                        </svg>
+                        Materials
                     </a>
                 </li>
             </ul>
@@ -135,7 +162,8 @@
 
             <ul class="nav flex-column mb-auto">
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'admin.profile') active @endif" href="{{ route('admin.profile') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if (Route::currentRouteName() == 'admin.profile') active @endif"
+                        href="{{ route('admin.profile') }}">
                         <svg class="bi">
                             <use xlink:href="#person" />
                         </svg>

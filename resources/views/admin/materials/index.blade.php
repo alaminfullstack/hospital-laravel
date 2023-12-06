@@ -1,12 +1,12 @@
 @extends('layouts.admin.app')
 
 @section('title')
-    Service list
+    Material list
 @endsection
 
 
 @section('breadcrumb')
-    Services
+    Materials
 @endsection
 
 @section('content')
@@ -16,9 +16,9 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div class="h5 mb-0">
-                            {{ __('Services') }}
+                            {{ __('Materials') }}
                         </div>
-                        <a href="{{ route('admin.services.create') }}" class="btn btn-primary">Create New</a>
+                        <a href="{{ route('admin.materials.create') }}" class="btn btn-primary">Create New</a>
                     </div>
 
                     <div class="card-body">
@@ -45,28 +45,28 @@
                                 </thead>
 
                                 <tbody>
-                                    @forelse ($services as $service)
+                                    @forelse ($materials as $material)
                                         <tr>
                                             <td>
-                                                {{ $services->firstItem() + $loop->index }}
+                                                {{ $materials->firstItem() + $loop->index }}
                                             </td>
 
                                             <td>
-                                                {{ $service->title }}
+                                                {{ $material->title }}
                                             </td>
                                            
                                      
                                             <td>
                                                 <div class="d-flex">
                                                     <a class="btn btn-sm btn-primary me-3"
-                                                    href="{{ route('admin.services.edit', $service->id) }}">Edit</a>
+                                                    href="{{ route('admin.materials.edit', $material->id) }}">Edit</a>
 
                                                     <form method="POST"
-                                                        action="{{ route('admin.services.destroy', $service->id) }}">
+                                                        action="{{ route('admin.materials.destroy', $material->id) }}">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger"
-                                                            onclick="return confirm('Are you sure you want to delete this Service?')">Delete</button>
+                                                            onclick="return confirm('Are you sure you want to delete this Material?')">Delete</button>
                                                     </form>
                                                 </div>
                                             </td>
@@ -74,7 +74,7 @@
 
                                     @empty
                                         <tr>
-                                            <td colspan="7" class="text-center">Data Has Empty. Create a New <a href="{{ route('admin.services.create') }}">Click
+                                            <td colspan="7" class="text-center">Data Has Empty. Create a New <a href="{{ route('admin.materials.create') }}">Click
                                                     Here</a></td>
                                         </tr>
                                     @endforelse
@@ -83,7 +83,7 @@
                             </table>
                         </div>
 
-                        {!! $services->links() !!}
+                        {!! $materials->links() !!}
 
                        
                     </div>
