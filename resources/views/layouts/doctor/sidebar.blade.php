@@ -10,7 +10,7 @@
             <ul class="nav flex-column">
                 
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page"
+                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'doctor.dashboard') active @endif" aria-current="page"
                         href="{{ route('doctor.dashboard') }}">
                         <svg class="bi">
                             <use xlink:href="#house-fill" />
@@ -20,7 +20,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="{{ route('doctor.patients.index') }}">
+                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'doctor.patients.index') active @endif" href="{{ route('doctor.patients.index') }}">
                         <svg class="bi">
                             <use xlink:href="#cart" />
                         </svg>
@@ -42,7 +42,7 @@
                         <svg class="bi">
                             <use xlink:href="#graph-up" />
                         </svg>
-                        Reports
+                        Prescriptions
                     </a>
                 </li>
             </ul>
@@ -52,7 +52,7 @@
                 <span>Saved reports</span>
                 <a class="link-secondary" href="#" aria-label="Add a new report">
                     <svg class="bi">
-                        <use xlink:href="#plus-circle" />
+                        <use xlink:href="#graph-up" />
                     </svg>
                 </a>
             </h6>
