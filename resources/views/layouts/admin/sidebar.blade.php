@@ -135,6 +135,14 @@
 
             <ul class="nav flex-column mb-auto">
                 <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'admin.profile') active @endif" href="{{ route('admin.profile') }}">
+                        <svg class="bi">
+                            <use xlink:href="#person" />
+                        </svg>
+                        Profile
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2" href="#">
                         <svg class="bi">
                             <use xlink:href="#gear-wide-connected" />

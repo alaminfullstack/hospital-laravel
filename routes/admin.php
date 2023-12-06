@@ -16,6 +16,8 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
     Route::middleware('admin.auth')->group(function () {
         Route::get('/', [AdminAuthController::class, 'dashboard'])->name('dashboard');
+        Route::get('/profile', [AdminAuthController::class, 'profile'])->name('profile');
+        Route::post('/update-profile', [AdminAuthController::class, 'profile_update'])->name('profile.update');
         Route::get('logout', [AdminAuthController::class, 'logout'])->name('logout');
 
         // designations
