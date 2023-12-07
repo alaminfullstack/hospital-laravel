@@ -132,51 +132,332 @@
                                     <form action="{{ route('doctor.schedules.store') }}" method="POST">
                                         @csrf
 
-                                        <table class="table time_row">
-                                            <tr>
-                                                <th>Start</th>
-                                                <th>End</th>
-                                                <th>Action</th>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input type="time" name="job_time[start][]" class="form-control" required />
-                                                </td>
-                                                <td>
-                                                    <input type="time" name="job_time[end][]" class="form-control" required />
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-info add_row">More</button>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Start</label>
+                                                    <input type="time" name="start" class="form-control" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">End</label>
+                                                    <input type="time" name="end" class="form-control" required />
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" name="dayname" value="Saturday" />
+
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-success">Save</button>
+                                            </div>
+            
+                                        </div>
+                                    </form>
+
+                                    <h5 class="my-3">Slots</h5>
+
+                                    @php
+                                        $startday = get_schedule('Saturday');
+                                    @endphp
+                                    
+                                    @if($startday != null)
+                                        @php
+                                            $s_time = explode( ',', $startday->start_time);
+                                            $e_time = explode( ',', $startday->end_time);
+                                        @endphp
 
                                        
-                                           
-
-                                        <input type="hidden" name="dayname" value="Saturday" />
-
-                                           
-                                        <button type="submit" class="btn btn-success">Save</button>
-                                         
-                                     
-                                    </form>
+                                        @for ($i=0; $i < count($s_time); $i++)
+                                            <button class="badge bg-primary">{{ $s_time[$i] }} -- {{ $e_time[$i] }}</button>
+                                        @endfor
+                                    @endif
                                 </div>
 
                                 <div class="tab-pane fade" id="v-pills-sunday" role="tabpanel"
-                                    aria-labelledby="v-pills-sunday-tab" tabindex="0">...</div>
-                                <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel"
-                                    aria-labelledby="v-pills-disabled-tab" tabindex="0">...</div>
+                                    aria-labelledby="v-pills-sunday-tab" tabindex="0">
+                                    <h5>Create New Slot</h5>
+                                    <form action="{{ route('doctor.schedules.store') }}" method="POST">
+                                        @csrf
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Start</label>
+                                                    <input type="time" name="start" class="form-control" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">End</label>
+                                                    <input type="time" name="end" class="form-control" required />
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" name="dayname" value="Sunday" />
+
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-success">Save</button>
+                                            </div>
+            
+                                        </div>
+                                    </form>
+
+                                    <h5 class="my-3">Slots</h5>
+
+                                    @php
+                                        $startday = get_schedule('Sunday');
+                                    @endphp
+                                    
+                                    @if($startday != null)
+                                        @php
+                                            $s_time = explode( ',', $startday->start_time);
+                                            $e_time = explode( ',', $startday->end_time);
+                                        @endphp
+
+                                       
+                                        @for ($i=0; $i < count($s_time); $i++)
+                                            <button class="badge bg-primary">{{ $s_time[$i] }} -- {{ $e_time[$i] }}</button>
+                                        @endfor
+                                    @endif
+                                </div>
+                               
                                 <div class="tab-pane fade" id="v-pills-monday" role="tabpanel"
-                                    aria-labelledby="v-pills-monday-tab" tabindex="0">...</div>
+                                    aria-labelledby="v-pills-monday-tab" tabindex="0">
+                                    <h5>Create New Slot</h5>
+                                    <form action="{{ route('doctor.schedules.store') }}" method="POST">
+                                        @csrf
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Start</label>
+                                                    <input type="time" name="start" class="form-control" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">End</label>
+                                                    <input type="time" name="end" class="form-control" required />
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" name="dayname" value="Monday" />
+
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-success">Save</button>
+                                            </div>
+            
+                                        </div>
+                                    </form>
+
+                                    <h5 class="my-3">Slots</h5>
+
+                                    @php
+                                        $startday = get_schedule('Monday');
+                                    @endphp
+                                    
+                                    @if($startday != null)
+                                        @php
+                                            $s_time = explode( ',', $startday->start_time);
+                                            $e_time = explode( ',', $startday->end_time);
+                                        @endphp
+
+                                       
+                                        @for ($i=0; $i < count($s_time); $i++)
+                                            <button class="badge bg-primary">{{ $s_time[$i] }} -- {{ $e_time[$i] }}</button>
+                                        @endfor
+                                    @endif
+
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-tuesday" role="tabpanel"
-                                    aria-labelledby="v-pills-tuesday-tab" tabindex="0">...</div>
+                                    aria-labelledby="v-pills-tuesday-tab" tabindex="0">
+                                    <h5>Create New Slot</h5>
+                                    <form action="{{ route('doctor.schedules.store') }}" method="POST">
+                                        @csrf
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Start</label>
+                                                    <input type="time" name="start" class="form-control" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">End</label>
+                                                    <input type="time" name="end" class="form-control" required />
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" name="dayname" value="Tuesday" />
+
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-success">Save</button>
+                                            </div>
+            
+                                        </div>
+                                    </form>
+
+                                    <h5 class="my-3">Slots</h5>
+
+                                    @php
+                                        $startday = get_schedule('Tuesday');
+                                    @endphp
+                                    
+                                    @if($startday != null)
+                                        @php
+                                            $s_time = explode( ',', $startday->start_time);
+                                            $e_time = explode( ',', $startday->end_time);
+                                        @endphp
+
+                                       
+                                        @for ($i=0; $i < count($s_time); $i++)
+                                            <button class="badge bg-primary">{{ $s_time[$i] }} -- {{ $e_time[$i] }}</button>
+                                        @endfor
+                                    @endif
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-wednesday" role="tabpanel"
-                                    aria-labelledby="v-pills-wednesday-tab" tabindex="0">...</div>
+                                    aria-labelledby="v-pills-wednesday-tab" tabindex="0">
+                                    <h5>Create New Slot</h5>
+                                    <form action="{{ route('doctor.schedules.store') }}" method="POST">
+                                        @csrf
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Start</label>
+                                                    <input type="time" name="start" class="form-control" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">End</label>
+                                                    <input type="time" name="end" class="form-control" required />
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" name="dayname" value="Wednesday" />
+
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-success">Save</button>
+                                            </div>
+            
+                                        </div>
+                                    </form>
+
+                                    <h5 class="my-3">Slots</h5>
+
+                                    @php
+                                        $startday = get_schedule('Wednesday');
+                                    @endphp
+                                    
+                                    @if($startday != null)
+                                        @php
+                                            $s_time = explode( ',', $startday->start_time);
+                                            $e_time = explode( ',', $startday->end_time);
+                                        @endphp
+
+                                       
+                                        @for ($i=0; $i < count($s_time); $i++)
+                                            <button class="badge bg-primary">{{ $s_time[$i] }} -- {{ $e_time[$i] }}</button>
+                                        @endfor
+                                    @endif
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-thursday" role="tabpanel"
-                                    aria-labelledby="v-pills-thursday-tab" tabindex="0">...</div>
+                                    aria-labelledby="v-pills-thursday-tab" tabindex="0">
+                                    <h5>Create New Slot</h5>
+                                    <form action="{{ route('doctor.schedules.store') }}" method="POST">
+                                        @csrf
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Start</label>
+                                                    <input type="time" name="start" class="form-control" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">End</label>
+                                                    <input type="time" name="end" class="form-control" required />
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" name="dayname" value="Thursday" />
+
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-success">Save</button>
+                                            </div>
+            
+                                        </div>
+                                    </form>
+
+                                    <h5 class="my-3">Slots</h5>
+
+                                    @php
+                                        $startday = get_schedule('Thursday');
+                                    @endphp
+                                    
+                                    @if($startday != null)
+                                        @php
+                                            $s_time = explode( ',', $startday->start_time);
+                                            $e_time = explode( ',', $startday->end_time);
+                                        @endphp
+
+                                       
+                                        @for ($i=0; $i < count($s_time); $i++)
+                                            <button class="badge bg-primary">{{ $s_time[$i] }} -- {{ $e_time[$i] }}</button>
+                                        @endfor
+                                    @endif
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-friday" role="tabpanel"
-                                    aria-labelledby="v-pills-friday-tab" tabindex="0">...</div>
+                                    aria-labelledby="v-pills-friday-tab" tabindex="0">
+                                    <h5>Create New Slot</h5>
+                                    <form action="{{ route('doctor.schedules.store') }}" method="POST">
+                                        @csrf
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">Start</label>
+                                                    <input type="time" name="start" class="form-control" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label">End</label>
+                                                    <input type="time" name="end" class="form-control" required />
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" name="dayname" value="Friday" />
+
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-success">Save</button>
+                                            </div>
+            
+                                        </div>
+                                    </form>
+
+                                    <h5 class="my-3">Slots</h5>
+
+                                    @php
+                                        $startday = get_schedule('Friday');
+                                    @endphp
+                                    
+                                    @if($startday != null)
+                                        @php
+                                            $s_time = explode( ',', $startday->start_time);
+                                            $e_time = explode( ',', $startday->end_time);
+                                        @endphp
+
+                                       
+                                        @for ($i=0; $i < count($s_time); $i++)
+                                            <button class="badge bg-primary">{{ $s_time[$i] }} -- {{ $e_time[$i] }}</button>
+                                        @endfor
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -187,22 +468,5 @@
 @endsection
 
 @push('script')
-    <script>
-         $(document).on('click', '.add_row', function(e){
-            e.preventDefault();
-            let html = '<tr>'+
-                            '<td><input type="time" name="job_time[start][]" class="form-control" /></td>'+
-                            '<td><input type="time" name="job_time[end][]" class="form-control" /></td>'+
-                            '<td><button type="button" class="btn btn-sm btn-danger remove_row">Remove</button></td>'+
-                        '</tr>';
-
-            
-                $(this).parents('table').find('tr').last().after(html);
-           
-        });
-
-        $(document).on('click', '.remove_row', function() {
-            $(this).parents('tr').remove();
-        });
-    </script>
+    <script></script>
 @endpush

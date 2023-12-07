@@ -16,8 +16,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedules = Schedule::where('doctor_id', auth()->id())->get();
-        return view('doctor.schedules.index', compact('schedules'));
+        return view('doctor.schedules.index');
     }
 
     /**
@@ -44,17 +43,20 @@ class ScheduleController extends Controller
 
         $schedule = Schedule::where(['doctor_id' => $doctor_id, 'dayname' => $dayname])->first();
    
+        $start = $request->start;
+        $end = $request->end;
 
         if($schedule == null){
             $schedule = new Schedule();
         }else{
-    
+            $start = $start.','.$schedule->start_time;
+            $end = $end.','.$schedule->end_time;
         }
 
         $schedule->doctor_id = $doctor_id;
         $schedule->dayname = $dayname;
-        $schedule->start_time = $request->start;
-        $schedule->end_time = $request->end;
+        $schedule->start_time = $start;
+        $schedule->end_time = $end;
 
         try{
             $schedule->save();

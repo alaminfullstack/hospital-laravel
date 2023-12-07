@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Material;
 use App\Models\Medicine;
+use App\Models\Schedule;
 
 if (!function_exists('get_doctors')) {
     function get_doctors()
@@ -33,6 +34,17 @@ if (!function_exists('get_materials')) {
     function get_materials()
     {
         return Material::select(['id','title'])->get();
+    }
+}
+
+if (!function_exists('get_schedule')) {
+    function get_schedule($dayname, $doctor_id = null)
+    {
+        if($doctor_id == null){
+            $doctor_id = auth()->id();
+        }
+        
+        return Schedule::where(['doctor_id' => $doctor_id, 'dayname' => $dayname])->first();
     }
 }
 
