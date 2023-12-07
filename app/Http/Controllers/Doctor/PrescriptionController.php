@@ -54,7 +54,8 @@ class PrescriptionController extends Controller
      */
     public function show($id)
     {
-        //
+        $prescription = Prescription::findOrFail($id);
+        return view('doctor.prescriptions.show', compact('prescription'));
     }
 
     /**

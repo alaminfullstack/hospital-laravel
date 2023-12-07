@@ -1,4 +1,4 @@
-@extends('layouts.patient.app')
+@extends('layouts.admin.app')
 
 @section('title')
     Prescription Show

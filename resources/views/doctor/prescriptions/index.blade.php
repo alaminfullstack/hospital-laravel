@@ -69,6 +69,12 @@
                                             
                                             <td>
                                                 <div class="d-flex">
+                                                    <a class="btn btn-sm btn-success me-3"
+                                                    href="{{ route('prescription.download', $prescription->id) }}">Download</a>
+
+                                                    <a class="btn btn-sm btn-info me-3"
+                                                    href="{{ route('doctor.prescriptions.show', $prescription->id) }}">View</a>
+
                                                     <a class="btn btn-sm btn-primary me-3"
                                                     href="{{ route('doctor.prescriptions.edit', $prescription->id) }}">Edit</a>
 
