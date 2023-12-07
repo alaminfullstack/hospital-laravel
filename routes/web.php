@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Auth\PatientAuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\PatientAuthController;
+use App\Http\Controllers\Patient\PrescriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,11 @@ Route::prefix('patient')->as('patient.')->group(function () {
         Route::get('/profile', [PatientAuthController::class, 'profile'])->name('profile');
         Route::post('/update-profile', [PatientAuthController::class, 'profile_update'])->name('profile.update');
         Route::get('logout', [PatientAuthController::class, 'logout'])->name('logout');
+
+        // prescriptions
+        Route::get('prescriptions', [PrescriptionController::class, 'index'])->name('prescriptions.index');
+        Route::get('prescription/{id}/view', [PrescriptionController::class, 'show'])->name('prescriptions.show');
+        Route::get('prescription/{id}/print', [PrescriptionController::class, 'print'])->name('prescriptions.print');
     });
 });
 
