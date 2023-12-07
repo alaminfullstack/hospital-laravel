@@ -69,7 +69,7 @@
                                             <td>
                                                 <div class="d-flex">
                                                     <a class="btn btn-sm btn-success me-3"
-                                                    href="{{ route('patient.prescriptions.print', $prescription->id) }}">Download</a>
+                                                    href="{{ route('prescription.download', $prescription->id) }}">Download</a>
 
                                                     <a class="btn btn-sm btn-primary me-3"
                                                     href="{{ route('patient.prescriptions.show', $prescription->id) }}">View</a>

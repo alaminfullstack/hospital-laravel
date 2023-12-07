@@ -109,7 +109,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a href="{{ route('patient.prescriptions.print', $prescription->id) }}" class="btn btn-success">Download</a>
+                <a href="{{ route('prescription.download', $prescription->id) }}" class="btn btn-success">Download</a>
 
                         <div class="invoice-box">
                             <table cellpadding="0" cellspacing="0">

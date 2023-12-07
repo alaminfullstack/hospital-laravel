@@ -80,7 +80,8 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="https://sparksuite.github.io/simple-html-invoice-template/images/logo.png"
+                                <h5>Medical Center</h5>
+                                <img src="#"
                                     style="width: 100%; max-width: 300px" />
                             </td>
 

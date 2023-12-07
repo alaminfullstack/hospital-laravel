@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\PatientAuthController;
 use App\Http\Controllers\Patient\PrescriptionController;
+use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +32,10 @@ Route::prefix('patient')->as('patient.')->group(function () {
         // prescriptions
         Route::get('prescriptions', [PrescriptionController::class, 'index'])->name('prescriptions.index');
         Route::get('prescription/{id}/view', [PrescriptionController::class, 'show'])->name('prescriptions.show');
-        Route::get('prescription/{id}/print', [PrescriptionController::class, 'print'])->name('prescriptions.print');
     });
 });
 
+Route::get('prescription/{id}/print', [PdfController::class, 'prescription_download'])->name('prescription.download');
 Route::get('/', function () {
     return view('welcome');
 });
