@@ -5,6 +5,7 @@ use App\Http\Controllers\Doctor\PatientController;
 use App\Http\Controllers\Auth\DoctorAuthController;
 use App\Http\Controllers\Doctor\MedicineController;
 use App\Http\Controllers\Doctor\PrescriptionController;
+use App\Http\Controllers\Doctor\ScheduleController;
 
 Route::prefix('doctor')->as('doctor.')->group(function () {
     Route::get('login', [DoctorAuthController::class, 'login'])->name('login');
@@ -18,8 +19,12 @@ Route::prefix('doctor')->as('doctor.')->group(function () {
         Route::post('/update-profile', [DoctorAuthController::class, 'profile_update'])->name('profile.update');
         Route::get('logout', [DoctorAuthController::class, 'logout'])->name('logout');
 
+         // schedules
+         Route::resource('schedules', ScheduleController::class)->names('schedules');
+
          // medicines
          Route::resource('medicines', MedicineController::class)->names('medicines');
+
          // prescriptions
          Route::resource('prescriptions', PrescriptionController::class)->names('prescriptions');
          // patients

@@ -33,7 +33,7 @@
                         <svg class="bi">
                             <use xlink:href="#people" />
                         </svg>
-                        Appoitment
+                        Appoitments
                     </a>
                 </li>
                
@@ -43,6 +43,15 @@
                             <use xlink:href="#graph-up" />
                         </svg>
                         Prescriptions
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'doctor.schedules.index') active @endif" href="{{ route('doctor.schedules.index') }}">
+                        <svg class="bi">
+                            <use xlink:href="#table" />
+                        </svg>
+                        Schedules
                     </a>
                 </li>
             </ul>

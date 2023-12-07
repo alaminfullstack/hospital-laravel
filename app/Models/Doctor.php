@@ -49,6 +49,16 @@ class Doctor extends Authenticatable
         return $this->belongsTo(Designation::class, 'designation_id', 'id');
     }
 
+    /**
+     * Get all of the schedules for the Doctor
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class, 'doctor_id', 'id');
+    }
+
 
     public function scopeActive($query){
         return $query->where('status', 1);
