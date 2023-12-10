@@ -73,6 +73,11 @@ class PrescriptionRepository
                 }
             }
 
+            $des = '';
+            $purpose =  'prescription sended. Code: '.$prescription->invoice;
+            
+            create_notification($prescription->doctor_id, 'Doctor', $prescription->patient_id, 'Patient', $purpose, $des);
+
             DB::commit();
 
             return true;

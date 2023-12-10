@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use App\Models\Doctor;
-use App\Models\Designation;
+use App\Models\Centeral;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Intervention\Image\Facades\Image;
 
-class DoctorAuthController extends Controller
+class CenteralAuthController extends Controller
 {
     /**
      * show login
@@ -21,7 +18,7 @@ class DoctorAuthController extends Controller
      **/
     public function login()
     {
-        return view('doctor.login');
+        return view('centeral.login');
     }
 
 
@@ -35,8 +32,8 @@ class DoctorAuthController extends Controller
      **/
     public function save_login(Request $request)
     {
-        if(Auth::guard('doctor')->attempt(['email' => $request->email, 'password' => $request->password])){
-            return redirect()->route('doctor.dashboard');
+        if(Auth::guard('centeral')->attempt(['email' => $request->email, 'password' => $request->password])){
+            return redirect()->route('centeral.dashboard');
         }
         
         return redirect()->back()->with('error', 'The provided credentials do not match our records.');
@@ -50,7 +47,7 @@ class DoctorAuthController extends Controller
      **/
     public function register()
     {
-        return view('doctor.register');
+        return view('centeral.register');
     }
 
 
@@ -71,41 +68,36 @@ class DoctorAuthController extends Controller
             'password' => 'required|confirmed|min:6'
         ]);
 
-        $doctor = new Doctor();
-        $doctor->name = $request->name;
-        $doctor->mobile = $request->mobile;
-        $doctor->email = $request->email;
-        $doctor->password = Hash::make($request->password);
+        $centeral = new Centeral();
+        $centeral->name = $request->name;
+        $centeral->mobile = $request->mobile;
+        $centeral->email = $request->email;
+        $centeral->password = Hash::make($request->password);
 
-        if($doctor->save()){
-            Auth::guard('doctor')->login($doctor);
-            return redirect()->route('doctor.dashboard');
+        if($centeral->save()){
+            Auth::guard('centeral')->login($centeral);
+            return redirect()->route('centeral.dashboard');
         }
         
         return redirect()->back()->with('error', 'something went to wrong!');
     }
 
     public function dashboard(){
-        $total_patient = User::count();
-        $total_doctor = Doctor::count();
-        $total_designation = Designation::count();
         $today_appoitments  = [];
-        return view('doctor.dashboard', compact('total_patient', 'total_doctor', 'total_designation', 'today_appoitments'));
+        return view('centeral.dashboard', compact('today_appoitments'));
     }
 
-    public function notifications(){
-        return view('doctor.notifications');
-    }
+
 
 
     public function profile(){
-        $data = auth()->guard('doctor')->user();
-        return view('doctor.profile', compact('data'));
+        $data = auth()->guard('centeral')->user();
+        return view('centeral.profile', compact('data'));
     }
 
     public function profile_update(Request $request)
     {
-        $data = auth()->guard('doctor')->user();
+        $data = auth()->guard('centeral')->user();
 
         if($request->name != null){
             $data->name = $request->name;
@@ -135,21 +127,6 @@ class DoctorAuthController extends Controller
             $data->password = Hash::make($request->password);
         }
 
-        if ($request->has('image')) {
-            $file = $request->file('image');
-            $extenstion = $file->getClientOriginalExtension();
-            $file_name = time() . '.' . $extenstion;
-
-            $path = public_path('uploads/' . $file_name);
-
-            // Resize and save the image using Intervention Image
-            Image::make($file->getRealPath())->resize(600, 600, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($path);
-
-            $data->image = 'uploads/' . $file_name;
-        }
-
 
         if($data->save()){
             return redirect()->back()->with('success', 'Updated Successfully');
@@ -160,7 +137,7 @@ class DoctorAuthController extends Controller
     }
 
     public function logout(){
-        Auth::guard('doctor')->logout();
-        return redirect()->route('doctor.login');
+        Auth::guard('centeral')->logout();
+        return redirect()->route('centeral.login');
     }
 }

@@ -23,15 +23,24 @@
             </a>
         </header>
 
-        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-            <div class="container-fluid py-5">
-                <h2>Patient</h2>
-                <p class="col-md-8 fs-4">Using a series of utilities, you can create an appoitment just like the real world interface. Are you new here ? <a href="{{ route('patient.register') }}">Register</a> </p>
-                <a class="btn btn-outline-secondary" href="{{ route('patient.login') }}">Login as a patient</a>
-            </div>
-        </div>
+
 
         <div class="row align-items-md-stretch">
+            <div class="col-md-6 mb-3">
+                <div class="h-100 p-5 text-bg-light rounded-3">
+                    <h2>Patient</h2>
+                    <p class="col-md-8 fs-4">Using a series of utilities, you can create an appoitment just like the real world interface. Are you new here ? <a href="{{ route('patient.register') }}">Register</a> </p>
+                    <a class="btn btn-outline-secondary" href="{{ route('patient.login') }}">Login as a patient</a>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="h-100 p-5 text-bg-light rounded-3">
+                    <h2>Centeral</h2>
+                    <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look.
+                        Then, mix and match with additional component themes and more. Are you new here ? <a href="{{ route('centeral.register') }}">Register</a></p>
+                    <a class="btn btn-outline-secondary" href="{{ route('centeral.login') }}">Login as a dianogistic</a>
+                </div>
+            </div>
             <div class="col-md-6">
                 <div class="h-100 p-5 text-bg-light rounded-3">
                     <h2>Doctor</h2>

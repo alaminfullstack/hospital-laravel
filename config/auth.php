@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'centeral' => [
+            'driver' => 'session',
+            'provider' => 'centerals',
+        ],
         'doctor' => [
             'driver' => 'session',
             'provider' => 'doctors',
@@ -75,6 +79,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'centerals' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Centeral::class,
         ],
         'doctors' => [
             'driver' => 'eloquent',

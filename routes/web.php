@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\PatientAuthController;
+use App\Http\Controllers\Patient\AppoitmentController;
 use App\Http\Controllers\Patient\PrescriptionController;
 use App\Http\Controllers\PdfController;
 
@@ -25,10 +26,15 @@ Route::prefix('patient')->as('patient.')->group(function () {
 
     Route::middleware('auth')->group(function () {
         Route::get('/', [PatientAuthController::class, 'dashboard'])->name('dashboard');
+        Route::get('/notifications', [PatientAuthController::class, 'notifications'])->name('notifications');
         Route::get('/profile', [PatientAuthController::class, 'profile'])->name('profile');
         Route::post('/update-profile', [PatientAuthController::class, 'profile_update'])->name('profile.update');
         Route::get('logout', [PatientAuthController::class, 'logout'])->name('logout');
 
+        // appoitments
+        Route::resource('appoitments', AppoitmentController::class)->names('appoitments');
+        Route::get('appoitment-get-schedule', [AppoitmentController::class, 'get_schedule'])->name('appoitments.get_schedule');
+        
         // prescriptions
         Route::get('prescriptions', [PrescriptionController::class, 'index'])->name('prescriptions.index');
         Route::get('prescription/{id}/view', [PrescriptionController::class, 'show'])->name('prescriptions.show');

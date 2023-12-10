@@ -157,6 +157,10 @@ class PatientAuthController extends Controller
         
     }
 
+    public function notifications(){
+        return view('patient.notifications');
+    }
+
     public function logout(){
         Auth::logout();
         return redirect()->route('patient.login');
