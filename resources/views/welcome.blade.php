@@ -8,6 +8,8 @@
     <link href="{{ asset('assets/css') }}/bootstrap.min.css" rel="stylesheet">
 </head>
 
+{{-- (*&#$%$*^$^$&%%#@#!$R --}}
+
 <body>
     <div class="container">
         <header class="py-3 mb-4 border-bottom">
