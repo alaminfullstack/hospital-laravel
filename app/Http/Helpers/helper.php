@@ -11,7 +11,7 @@ use App\Models\Service;
 if (!function_exists('get_doctors')) {
     function get_doctors()
     {
-        return Doctor::select(['id','name'])->active()->get();
+        return Doctor::select(['id','name','designation_id','mobile'])->active()->get();
     }
 }
 
@@ -19,7 +19,7 @@ if (!function_exists('get_doctors')) {
 if (!function_exists('get_patients')) {
     function get_patients()
     {
-        return User::select(['id','name'])->active()->get();
+        return User::select(['id','name','mobile'])->active()->get();
     }
 }
 

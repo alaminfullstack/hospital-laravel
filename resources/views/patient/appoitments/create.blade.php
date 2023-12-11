@@ -50,7 +50,7 @@
                                         <label class="form-label">Doctor</label>
                                         <select name="doctor_id" id="doctor_id" class="form-select" required>
                                             @foreach (get_doctors() as $doctor)
-                                            <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                                            <option value="{{ $doctor->id }}">{{ $doctor->name }} -- ({{ $doctor->designation->title ?? null }})</option>
                                             @endforeach
                                         </select>
                                     </div>
