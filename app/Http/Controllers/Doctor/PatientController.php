@@ -54,7 +54,8 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        //
+        $patient = User::findOrFail($id);
+        return view('doctor.patients.show', compact('patient'));
     }
 
     /**

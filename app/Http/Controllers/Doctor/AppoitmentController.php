@@ -50,7 +50,8 @@ class AppoitmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $appoitment = Appoitment::findOrFail($id);
+        return view('doctor.appoitments.show', compact('appoitment'));
     }
 
     /**

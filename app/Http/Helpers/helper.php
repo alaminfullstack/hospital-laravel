@@ -80,13 +80,17 @@ if (!function_exists('create_notification')) {
 if (!function_exists('unread_notification')) {
     function unread_notification($to, $type)
     {
-        return CustomNotification::where(['to_id' => $to, 'to_type' => $type])->get();
+        return CustomNotification::active()->where(['to_id' => $to, 'to_type' => $type])->latest()->get();
     }
 }
 
 if (!function_exists('get_from_notifier')) {
     function get_from_notifier($id, $type)
     {
+        if($type == 'Patient'){
+            $type = 'User';
+        }
+
         $modelClass = "App\\Models\\$type";
         return $modelClass::where('id', $id)->first();
     }

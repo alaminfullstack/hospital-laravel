@@ -78,9 +78,7 @@
                                                 <div class="d-flex">
 
                                                     @if ($notification->status == 0)
-                                                        <form method="POST" action="">
-                                                            @csrf
-                                                            @method('DELETE')
+                                                        <form method="GET" action="{{ route('doctor.notifications.delete', $notification->id) }}">
                                                             <button type="submit" class="btn btn-sm btn-danger"
                                                                 onclick="return confirm('Are you sure you want to delete this Service?')">Delete</button>
                                                         </form>

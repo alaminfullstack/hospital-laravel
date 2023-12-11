@@ -35,4 +35,14 @@ class Appoitment extends Model
     {
         return $this->belongsTo(User::class, 'patient_id', 'id');
     }
+
+    /**
+     * Get all of the images for the Appoitment
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany(AppoitmentImage::class, 'appoitment_id', 'id');
+    }
 }

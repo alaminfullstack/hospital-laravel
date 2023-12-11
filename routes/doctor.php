@@ -17,6 +17,7 @@ Route::prefix('doctor')->as('doctor.')->group(function () {
     Route::middleware('doctor.auth')->group(function () {
         Route::get('/', [DoctorAuthController::class, 'dashboard'])->name('dashboard');
         Route::get('/notifications', [DoctorAuthController::class, 'notifications'])->name('notifications');
+        Route::get('/notification/{id}', [DoctorAuthController::class, 'notification_delete'])->name('notifications.delete');
         Route::get('/profile', [DoctorAuthController::class, 'profile'])->name('profile');
         Route::post('/update-profile', [DoctorAuthController::class, 'profile_update'])->name('profile.update');
         Route::get('logout', [DoctorAuthController::class, 'logout'])->name('logout');

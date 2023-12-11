@@ -35,10 +35,10 @@
             </div>
             <div class="col-md-6 mb-3">
                 <div class="h-100 p-5 text-bg-light rounded-3">
-                    <h2>Centeral</h2>
+                    <h2>Diagnostic Center</h2>
                     <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look.
                         Then, mix and match with additional component themes and more. Are you new here ? <a href="{{ route('centeral.register') }}">Register</a></p>
-                    <a class="btn btn-outline-secondary" href="{{ route('centeral.login') }}">Login as a dianogistic</a>
+                    <a class="btn btn-outline-secondary" href="{{ route('centeral.login') }}">Login as a diagnostic</a>
                 </div>
             </div>
             <div class="col-md-6">

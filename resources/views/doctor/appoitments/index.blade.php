@@ -72,7 +72,9 @@
 
                                             <td>
                                                 <div class="d-flex">
-                                                   
+                                                    <a class="btn btn-sm btn-success me-3"
+                                                    href="{{ route('doctor.appoitments.show', $appoitment->id) }}">View</a>
+
                                                     @if($appoitment->status == 'pending')
                                                     
                                                     <!-- Button trigger modal -->

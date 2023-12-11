@@ -11,4 +11,9 @@ class CustomNotification extends Model
 
     protected $table = 'custom_notifications';
     protected $guarded = [];
+
+
+    public function scopeActive($query){
+        return $query->where('status', 0);
+    }
 }

@@ -43,4 +43,25 @@ class User extends Authenticatable
     public function scopeActive($query){
         return $query->where('status', 1);
     }
+
+    /**
+     * Get all of the images for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany(PatientAttachment::class, 'patient_id', 'id');
+    }
+
+
+    /**
+     * Get all of the images for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function appoitment_images()
+    {
+        return $this->hasManyThrough(AppoitmentImage::class, Appoitment::class, 'patient_id', 'appoitment_id');
+    }
 }

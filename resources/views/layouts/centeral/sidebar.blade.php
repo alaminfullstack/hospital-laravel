@@ -18,6 +18,16 @@
                         Dashboard
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'centeral.attachments.index') active @endif" aria-current="page"
+                        href="{{ route('centeral.attachments.index') }}">
+                        <svg class="bi">
+                            <use xlink:href="#house-fill" />
+                        </svg>
+                        Patient Attachments
+                    </a>
+                </li>
             </ul>
 
         

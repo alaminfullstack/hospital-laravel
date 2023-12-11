@@ -75,7 +75,11 @@
                                             </td>
 
                                             <td>
+                                             
                                                 <div class="d-flex">
+                                                    <a class="btn btn-sm btn-success me-3"
+                                                    href="{{ route('doctor.patients.show', $patient->id) }}">View</a>
+
                                                     <a class="btn btn-sm btn-primary me-3"
                                                     href="{{ route('doctor.patients.edit', $patient->id) }}">Edit</a>
                                                 </div>

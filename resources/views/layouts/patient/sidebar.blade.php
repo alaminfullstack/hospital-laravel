@@ -77,6 +77,14 @@
 
             <ul class="nav flex-column mb-auto">
                 <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'patient.attachments') active @endif" href="{{ route('patient.attachments') }}">
+                        <svg class="bi">
+                            <use xlink:href="#person" />
+                        </svg>
+                        Attachments
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2 @if(Route::currentRouteName() == 'patient.profile') active @endif" href="{{ route('patient.profile') }}">
                         <svg class="bi">
                             <use xlink:href="#person" />

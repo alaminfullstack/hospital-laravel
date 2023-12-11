@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Models\Designation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\CustomNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
@@ -94,6 +95,14 @@ class DoctorAuthController extends Controller
     }
 
     public function notifications(){
+        return view('doctor.notifications');
+    }
+
+    public function notification_delete($id){
+        $notification = CustomNotification::find($id);
+        $notification->status = 1; 
+        $notification->save();
+        
         return view('doctor.notifications');
     }
 

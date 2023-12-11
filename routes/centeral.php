@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\CenteralAuthController;
-
+use App\Http\Controllers\Centeral\AttachmentController;
 
 Route::prefix('centeral')->as('centeral.')->group(function () {
     Route::get('login', [CenteralAuthController::class, 'login'])->name('login');
@@ -15,5 +15,8 @@ Route::prefix('centeral')->as('centeral.')->group(function () {
         Route::get('/profile', [CenteralAuthController::class, 'profile'])->name('profile');
         Route::post('/update-profile', [CenteralAuthController::class, 'profile_update'])->name('profile.update');
         Route::get('logout', [CenteralAuthController::class, 'logout'])->name('logout');
+
+
+        Route::resource('attachments', AttachmentController::class)->names('attachments');
     });
 });

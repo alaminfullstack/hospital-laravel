@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Patient;
 
-use App\Http\Controllers\Controller;
-use App\Models\Appoitment;
-use App\Models\Schedule;
 use Carbon\Carbon;
+use App\Models\Schedule;
+use App\Models\Appoitment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\AppoitmentImage;
+use Intervention\Image\Facades\Image;
 
 class AppoitmentController extends Controller
 {
@@ -21,7 +23,7 @@ class AppoitmentController extends Controller
         return view('patient.appoitments.index', compact('appoitments'));
     }
 
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -40,7 +42,7 @@ class AppoitmentController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $appoitment = new Appoitment();
         $appoitment->doctor_id = $request->doctor_id;
         $appoitment->code = $request->code;
@@ -51,21 +53,42 @@ class AppoitmentController extends Controller
         $appoitment->patient_id = auth()->id();
         $appoitment->status = 'pending';
 
-        if($request->times){
+        if ($request->times) {
             $time = explode(',', $request->times);
             $appoitment->start_time = $time[0];
             $appoitment->end_time = $time[1];
         }
-        
-        if($appoitment->save()){
+
+        if ($appoitment->save()) {
+
+            if ($request->has('images')) {
+                foreach ($request->images as $file) {
+                    //$file = $request->file('image');
+                    $extenstion = $file->getClientOriginalExtension();
+                    $file_name = time() . '.' . $extenstion;
+
+                    $path = public_path('uploads/' . $file_name);
+
+                    // Resize and save the image using Intervention Image
+                    Image::make($file->getRealPath())->resize(600, 600, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($path);
+
+                    $appoitment_image = new AppoitmentImage();
+                    $appoitment_image->appoitment_id = $appoitment->id;
+                    $appoitment_image->image = 'uploads/' . $file_name;
+                    $appoitment_image->save();
+                }
+            }
+
             $des = $appoitment->description;
-            $purpose =  'appoitment Request. Code: '.$appoitment->code;
-            
+            $purpose =  'appoitment Request. Code: ' . $appoitment->code;
+
             create_notification($appoitment->patient_id, 'Patient', $appoitment->doctor_id, 'Doctor', $purpose, $des);
 
             return redirect()->route('patient.appoitments.index')->with('success', 'Appoitment Uploaded Successfully');
         }
-        
+
         return back()->with('error', 'Something went to wrong!');
     }
 
@@ -77,7 +100,8 @@ class AppoitmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $appoitment = Appoitment::findOrFail($id);
+        return view('patient.appoitments.show', compact('appoitment'));
     }
 
     /**
@@ -104,7 +128,7 @@ class AppoitmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-    
+
         $appoitment = Appoitment::findOrFail($id);
         $appoitment->doctor_id = $request->doctor_id;
         $appoitment->code = $request->code;
@@ -115,18 +139,39 @@ class AppoitmentController extends Controller
         $appoitment->patient_id = auth()->id();
         $appoitment->status = 'pending';
 
-        if($request->times){
+        if ($request->times) {
             $time = explode(',', $request->times);
             $appoitment->start_time = $time[0];
             $appoitment->end_time = $time[1];
         }
-        
-        if($appoitment->save()){
+
+        if ($appoitment->save()) {
+
+            if ($request->has('images')) {
+                foreach ($request->images as $file) {
+                    //$file = $request->file('image');
+                    $extenstion = $file->getClientOriginalExtension();
+                    $file_name = time() . '.' . $extenstion;
+
+                    $path = public_path('uploads/' . $file_name);
+
+                    // Resize and save the image using Intervention Image
+                    Image::make($file->getRealPath())->resize(600, 600, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($path);
+
+                    $appoitment_image = new AppoitmentImage();
+                    $appoitment_image->appoitment_id = $appoitment->id;
+                    $appoitment_image->image = 'uploads/' . $file_name;
+                    $appoitment_image->save();
+                }
+            }
+
             return redirect()->route('patient.appoitments.index')->with('success', 'Appoitment updated Successfully');
         }
-        
 
-        
+
+
         return back()->with('error', 'Something went to wrong!');
     }
 
@@ -138,11 +183,11 @@ class AppoitmentController extends Controller
      */
     public function destroy($id)
     {
-       
+
 
         $appoitment = Appoitment::findOrFail($id);
 
-        if($appoitment->delete()){
+        if ($appoitment->delete()) {
             return redirect()->route('patient.appoitments.index')->with('success', 'Appoitment deleted Successfully');
         }
 
@@ -150,7 +195,8 @@ class AppoitmentController extends Controller
     }
 
 
-    public function get_schedule(Request $request){
+    public function get_schedule(Request $request)
+    {
         $date = $request->date;
         $doctor_id = $request->doctor_id;
         $dayname = Carbon::parse($date)->dayName;

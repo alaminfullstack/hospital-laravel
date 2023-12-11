@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Designation;
 use Illuminate\Http\Request;
+use App\Models\CustomNotification;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -157,7 +158,20 @@ class PatientAuthController extends Controller
         
     }
 
+    public function attachments(){
+        $patient = User::find(auth()->id());
+        return view('patient.attachments', compact('patient'));
+    }
+
     public function notifications(){
+        return view('patient.notifications');
+    }
+
+    public function notification_delete($id){
+        $notification = CustomNotification::find($id);
+        $notification->status = 1; 
+        $notification->save();
+        
         return view('patient.notifications');
     }
 

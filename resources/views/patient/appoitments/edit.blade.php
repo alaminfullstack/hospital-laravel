@@ -100,10 +100,17 @@
                                 
                             
 
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label class="form-label">Description</label>
                                         <textarea rows="3" name="description" class="form-control" placeholder="how you felling right now....">{{ $appoitment->description }}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Attachments <small>(Only Images. Multiple).</small></label>
+                                        <input type="file" name="images[]" class="form-control" />
                                     </div>
                                 </div>
                            

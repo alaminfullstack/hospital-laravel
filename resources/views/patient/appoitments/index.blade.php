@@ -72,8 +72,12 @@
 
                                             <td>
                                                 <div class="d-flex">
-                                                   
+                                                    <a class="btn btn-sm btn-success me-3"
+                                                    href="{{ route('patient.appoitments.show', $appoitment->id) }}">View</a>
+
                                                     @if($appoitment->status == 'pending')
+                                                    
+
                                                     <a class="btn btn-sm btn-primary me-3"
                                                     href="{{ route('patient.appoitments.edit', $appoitment->id) }}">Edit</a>
 

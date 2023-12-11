@@ -27,6 +27,8 @@ Route::prefix('patient')->as('patient.')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/', [PatientAuthController::class, 'dashboard'])->name('dashboard');
         Route::get('/notifications', [PatientAuthController::class, 'notifications'])->name('notifications');
+        Route::get('/notification/{id}', [PatientAuthController::class, 'notification_delete'])->name('notifications.delete');
+        Route::get('/attachments', [PatientAuthController::class, 'attachments'])->name('attachments');
         Route::get('/profile', [PatientAuthController::class, 'profile'])->name('profile');
         Route::post('/update-profile', [PatientAuthController::class, 'profile_update'])->name('profile.update');
         Route::get('logout', [PatientAuthController::class, 'logout'])->name('logout');
