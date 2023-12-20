@@ -1,0 +1,22 @@
+---
+deployments:
+  - deployment:
+      branch: gem  # Replace 'main' with your main branch name (e.g., master, mainline, etc.)
+      commands:
+        # Install dependencies
+        - /usr/local/bin/composer install --no-dev
+
+        # Run Laravel migrations (if necessary)
+        - php artisan migrate --force
+
+        # Create Demo Data
+        - php artisan db:seed
+        
+        # Create Storage Link
+        - php artisan storage:link
+        
+        # Clear Laravel cache
+        - php artisan cache:clear
+
+        # Deploy the code from GitHub repository
+        - /bin/cp -R * /home/onlinebazarm/public_html/demo
